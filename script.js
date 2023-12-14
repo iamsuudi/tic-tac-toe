@@ -67,13 +67,17 @@ function GameController(player1 = "Player One", player2 = "Player Two") {
         // row checking
         for (let row = 0; row < table.length; row++) {
             state = rowChecker(table[row]);
-            if (state === "X" || state === "O")
-                return state;
+            if (state === "X")
+                return "X has won!";
+            else if (state === "O")
+                return "O has won!";
 
             // column checking
             state = columnChecker(row);
-            if (state === "X" || state === "O")
-                return state;
+            if (state === "X")
+                return "X has won!";
+            else if (state === "O")
+                return "O has won!";
         }
 
         // diagonals checking
@@ -161,7 +165,8 @@ function screenController() {
         let activePlayer = game.getActivePlayer();
         game.playOneRound(target.dataset.row, target.dataset.col);
         
-        p.textContent = game.winChecker();
+        if (game.winChecker() !== "yet")
+            p.textContent = game.winChecker();
         target.textContent = activePlayer.token;
         // target.removeEventListener('click', updateScreen);
     }
