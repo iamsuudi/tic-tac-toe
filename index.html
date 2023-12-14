@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="/style.css" >
-    <script src="/script.js"></script>
+    <script src="/script.js" defer></script>
 </head>
 <body>
     <div class="container">
-        <button class="item 0x0"></button>
-        <button class="item 0x1"></button>
-        <button class="item 0x2"></button>
-        <button class="item 1x0"></button>
-        <button class="item 1x1"></button>
-        <button class="item 1x2"></button>
-        <button class="item 2x0"></button>
-        <button class="item 2x1"></button>
-        <button class="item 2x2"></button>
+        <button class="item 0x0" data-col="0" data-row="0"></button>
+        <button class="item 0x1" data-col="1" data-row="0"></button>
+        <button class="item 0x2" data-col="2" data-row="0"></button>
+        <button class="item 1x0" data-col="0" data-row="1"></button>
+        <button class="item 1x1" data-col="1" data-row="1"></button>
+        <button class="item 1x2" data-col="2" data-row="1"></button>
+        <button class="item 2x0" data-col="0" data-row="2"></button>
+        <button class="item 2x1" data-col="1" data-row="2"></button>
+        <button class="item 2x2" data-col="2" data-row="2"></button>
     </div>
 
     <p class="winner"></p>
