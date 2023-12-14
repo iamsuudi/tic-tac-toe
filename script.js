@@ -165,10 +165,12 @@ function screenController() {
         let activePlayer = game.getActivePlayer();
         game.playOneRound(target.dataset.row, target.dataset.col);
         
-        if (game.winChecker() !== "yet")
+        if (game.winChecker() !== "yet") {
             p.textContent = game.winChecker();
+            container.removeEventListener("click", updateScreen);
+        }
+
         target.textContent = activePlayer.token;
-        // target.removeEventListener('click', updateScreen);
     }
 }
 
