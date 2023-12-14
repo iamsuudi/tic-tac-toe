@@ -14,7 +14,7 @@ function GameBoard() {
 
     // drop token in a cell when called
     const dropToken = (row, col, token) => {
-        if (board[row][col].getValue() === " ")
+        if (board[row][col].getValue() === "-")
             board[row][col].addToken(token);
     };
 
@@ -40,12 +40,13 @@ function GameController(player1 = "Player One", player2 = "Player Two") {
     const board = GameBoard();
 
     const players = [
-        { name: player1, token: "XX" },
-        { name: player2, token: "OO" }
+        { name: player1, token: "X" },
+        { name: player2, token: "O" }
     ]
 
     // default active player is player 1
     let activePlayer = players[0];
+    let state = "";
 
     // switchs active player when called
     const switchPlayerTurn = () => {
@@ -63,29 +64,28 @@ function GameController(player1 = "Player One", player2 = "Player Two") {
 
     const winChecker = () => {
         const table = board.getBoard();
-        let winner;
 
         // row checking
         for (let row = 0; row < table.length; row++) {
-            winner = rowChecker(table[row]);
-            if (winner === "XX" || winner === "OO")
-                return winner;
+            state = rowChecker(table[row]);
+            if (state === "X" || state === "O")
+                return state;
 
             // column checking
-            winner = columnChecker(row);
-            if (winner === "XX" || winner === "OO")
-                return winner;
+            state = columnChecker(row);
+            if (state === "X" || state === "O")
+                return state;
         }
 
         // diagonals checking
-        winner = diagonalChecker();
-        if (winner === "XX" || winner === "OO")
-            return winner;
+        state = diagonalChecker();
+        if (state === "X" || state === "O")
+            return state;
 
         // check if all cells are filled
-        for (let row of table) {
-            for (let cell of row) {
-                if (cell.getValue() === " ") return "yet";
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                if (table[i][j].getValue() === "-") return "yet";
             }
         }
 
@@ -93,19 +93,19 @@ function GameController(player1 = "Player One", player2 = "Player Two") {
         return "It's tie";
 
         function rowChecker(row) {
-            if (row[0].getValue() === row[1].getValue() && row[1].getValue() === row[2].getValue())
+            if (row[0].getValue() === row[1].getValue() && row[1].getValue() !== "-"  && row[1].getValue() === row[2].getValue())
                 return row[0].getValue();
         }
 
         function columnChecker(col) {
-            if (table[0][col].getValue() === table[1][col].getValue() && table[1][col].getValue() === table[2][col].getValue())
-                return table[0][0].getValue();
+            if (table[0][col].getValue() === table[1][col].getValue() && table[1][col].getValue() !== "-"  && table[1][col].getValue() === table[2][col].getValue())
+                return table[0][col].getValue();
         }
 
         function diagonalChecker() {
-            if (table[0][0].getValue() === table[1][1].getValue() && table[2][2].getValue() === table[1][1].getValue())
+            if (table[0][0].getValue() === table[1][1].getValue() && table[1][1].getValue() !== "-" && table[2][2].getValue() === table[1][1].getValue())
                 return table[1][1].getValue();
-            if (table[0][2].getValue() === table[1][1].getValue() && table[2][0].getValue() === table[2][0].getValue())
+            if (table[2][0].getValue() === table[1][1].getValue() && table[1][1].getValue() !== "-"  && table[1][1].getValue() === table[0][2].getValue())
                 return table[1][1].getValue();
         }
     }
@@ -115,28 +115,31 @@ function GameController(player1 = "Player One", player2 = "Player Two") {
         console.log(`Dropping ${getActivePlayer().name}'s token into row-${row} column-${col}`);
 
         board.dropToken(row, col, getActivePlayer().token);
-        
-        if (winChecker() == "yet") {
+      
+        state = winChecker();
+
+        if (state == "yet") {
             // the board is not full and there is no winner
             switchPlayerTurn();
             printNewRound();
+            console.log(state);
         }
         else {
             // there is a winner or it's a tie / board is full
             board.printBoard();
-            console.log(winChecker());
+            console.log(state);
             board.clearBoard();
         }
     }
 
     printNewRound();
 
-    return { playOneRound, getActivePlayer };
+    return { playOneRound, getActivePlayer, state };
 }
 
 function cell() {
 
-    let value = " ";
+    let value = "-";
 
     const addToken = (player = value) => value = player;
 
@@ -145,4 +148,24 @@ function cell() {
     return { addToken, getValue };
 }
 
-const game = GameController();
+function screenController() {
+    const game = GameController();
+
+    const p = document.querySelector('p.winner');
+
+    const container = document.querySelector('div.container');
+    
+    container.addEventListener('click', updateScreen);
+
+    function updateScreen(event) {
+        let target = event.target;
+        let activePlayer = game.getActivePlayer();
+        game.playOneRound(target.dataset.row, target.dataset.col);
+        
+        p.textContent = game.state;
+        target.textContent = activePlayer.token;
+        // target.removeEventListener('click', updateScreen);
+    }
+}
+
+screenController();
