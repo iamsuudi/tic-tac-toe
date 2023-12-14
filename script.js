@@ -46,7 +46,6 @@ function GameController(player1 = "Player One", player2 = "Player Two") {
 
     // default active player is player 1
     let activePlayer = players[0];
-    let state = "";
 
     // switchs active player when called
     const switchPlayerTurn = () => {
@@ -116,7 +115,7 @@ function GameController(player1 = "Player One", player2 = "Player Two") {
 
         board.dropToken(row, col, getActivePlayer().token);
       
-        state = winChecker();
+        let state = winChecker();
 
         if (state == "yet") {
             // the board is not full and there is no winner
@@ -134,7 +133,7 @@ function GameController(player1 = "Player One", player2 = "Player Two") {
 
     printNewRound();
 
-    return { playOneRound, getActivePlayer, state };
+    return { playOneRound, getActivePlayer, winChecker };
 }
 
 function cell() {
@@ -162,7 +161,7 @@ function screenController() {
         let activePlayer = game.getActivePlayer();
         game.playOneRound(target.dataset.row, target.dataset.col);
         
-        p.textContent = game.state;
+        p.textContent = game.winChecker();
         target.textContent = activePlayer.token;
         // target.removeEventListener('click', updateScreen);
     }
