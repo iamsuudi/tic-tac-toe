@@ -24,8 +24,9 @@ div.container {
     grid-template-rows: repeat(3, 1fr);
 }
 
-div.item {
+button {
     border: 1px solid black;
+    background: none;
     font-size: 3rem;
     font-family: cursive;
     text-transform: uppercase;
@@ -35,38 +36,38 @@ div.item {
     align-items: center;
 }
 
-div.item1 {
+button:nth-child(1) {
     border-left: 0;
     border-top: 0;
 }
 
-div.item2 {
+button:nth-child(2) {
     border-top: 0;
 }
 
-div.item3 {
+button:nth-child(3) {
     border-right: 0;
     border-top: 0;
 }
 
-div.item4 {
+button:nth-child(4) {
     border-left: 0;
 }
 
-div.item6 {
+button:nth-child(6) {
     border-right: 0;
 }
 
-div.item7 {
+button:nth-child(7) {
     border-left: 0;
     border-bottom: 0;
 }
 
-div.item8 {
+button:nth-child(8) {
     border-bottom: 0;
 }
 
-div.item9 {
+button:nth-child(9) {
     border-right: 0;
     border-bottom: 0;
 }
