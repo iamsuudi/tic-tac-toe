@@ -1,78 +1,93 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
-    font-family: sans-serif;
+  width: 100vw;
+  height: 100vh;
+  font-family: sans-serif;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 div.container {
-    height: 15rem;
-    width: 15rem;
+  height: 15rem;
+  width: 15rem;
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 
 button {
-    border: 1px solid black;
-    background: none;
-    font-size: 3rem;
-    font-family: cursive;
-    text-transform: uppercase;
+  border: 1px solid black;
+  background: none;
+  font-size: 3rem;
+  font-family: cursive;
+  text-transform: uppercase;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button:nth-child(1) {
-    border-left: 0;
-    border-top: 0;
+  border-left: 0;
+  border-top: 0;
 }
 
 button:nth-child(2) {
-    border-top: 0;
+  border-top: 0;
 }
 
 button:nth-child(3) {
-    border-right: 0;
-    border-top: 0;
+  border-right: 0;
+  border-top: 0;
 }
 
 button:nth-child(4) {
-    border-left: 0;
+  border-left: 0;
 }
 
 button:nth-child(6) {
-    border-right: 0;
+  border-right: 0;
 }
 
 button:nth-child(7) {
-    border-left: 0;
-    border-bottom: 0;
+  border-left: 0;
+  border-bottom: 0;
 }
 
 button:nth-child(8) {
-    border-bottom: 0;
+  border-bottom: 0;
 }
 
 button:nth-child(9) {
-    border-right: 0;
-    border-bottom: 0;
+  border-right: 0;
+  border-bottom: 0;
 }
 
 p.winner {
-    margin-top: 5rem;
-    font-size: 2rem;
+  margin-top: 5rem;
+  font-size: 2rem;
+}
+
+dialog {
+  border: 0;
+  background: none;
+  margin: auto;
+  font-size: 5rem;
+  font-weight: 999;
+  font-family: cursive;
+  color: white;
+}
+
+::backdrop {
+  background-image: linear-gradient(black, black);
+  opacity: 0.7;
 }
