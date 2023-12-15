@@ -4,12 +4,6 @@ function GameBoard() {
     // the cells array
     const board = [[], [], []];
 
-    // fill each cell with an object which has addToken and getValue methods
-    for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 3; j++)
-            board[i][j] = cell();
-    }
-
     const getBoard = () => board;
 
     // drop token in a cell when called
