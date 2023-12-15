@@ -161,7 +161,7 @@ function screenController() {
     const dialog = document.querySelector('dialog');
     const container = document.querySelector('div.container');
     const buttons = Array.from(document.querySelectorAll('button'));
-    
+
     container.addEventListener('click', updateScreen);
 
     function updateScreen(event) {
