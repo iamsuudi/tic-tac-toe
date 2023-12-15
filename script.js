@@ -179,10 +179,11 @@ function screenController() {
         }
     }
 
-        if (game.winChecker() !== "yet") {
-            p.textContent = game.winChecker();
-            container.removeEventListener("click", updateScreen);
-        }
+    function closeDialog(event) {
+        console.log("dialog being closed");
+        clearScreen();
+        dialog.close();
+    }
 
         target.textContent = activePlayer.token;
     }
