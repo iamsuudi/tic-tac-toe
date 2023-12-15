@@ -169,8 +169,16 @@ function screenController() {
     function updateScreen(event) {
         let target = event.target;
         let activePlayer = game.getActivePlayer();
-        game.playOneRound(target.dataset.row, target.dataset.col);
-        
+        let state = game.playOneRound(target.dataset.row, target.dataset.col);
+
+        if (!target.textContent) target.textContent = activePlayer.token;
+
+        if (state !== "yet") {
+            p.textContent = state;
+            dialog.showModal();
+        }
+    }
+
         if (game.winChecker() !== "yet") {
             p.textContent = game.winChecker();
             container.removeEventListener("click", updateScreen);
