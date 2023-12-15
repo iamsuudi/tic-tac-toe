@@ -26,7 +26,10 @@ function GameBoard() {
         }
     }
 
-    return { getBoard, dropToken, printBoard, clearBoard };
+    // fill each cell with an object which has addToken and getValue methods
+    resetBoard();
+
+    return { getBoard, dropToken, printBoard, resetBoard };
 }
 
 function GameController(player1 = "Player One", player2 = "Player Two") {
