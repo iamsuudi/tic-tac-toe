@@ -8,8 +8,11 @@ function GameBoard() {
 
     // drop token in a cell when called
     const dropToken = (row, col, token) => {
-        if (board[row][col].getValue() === "-")
+        if (board[row][col].getValue() === " ") {
             board[row][col].addToken(token);
+            return "yes";
+        }
+        return "no";
     };
 
     // print values in cells when called
