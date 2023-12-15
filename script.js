@@ -116,9 +116,10 @@ function GameController(player1 = "Player One", player2 = "Player Two") {
 
         console.log(`Dropping ${getActivePlayer().name}'s token into row-${row} column-${col}`);
 
-        board.dropToken(row, col, getActivePlayer().token);
-      
-        let state = winChecker();
+        if (board.dropToken(row, col, getActivePlayer().token) == "no");
+        else {
+
+            let state = winChecker();
 
         if (state == "yet") {
             // the board is not full and there is no winner
