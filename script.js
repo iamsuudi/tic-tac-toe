@@ -87,7 +87,7 @@ function GameController(player1 = "Player One", player2 = "Player Two") {
         // check if all cells are filled
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
-                if (table[i][j].getValue() === "-") return "yet";
+                if (table[i][j].getValue() === " ") return "yet";
             }
         }
 
@@ -141,7 +141,7 @@ function GameController(player1 = "Player One", player2 = "Player Two") {
 
 function cell() {
 
-    let value = "-";
+    let value = " ";
 
     const addToken = (player = value) => value = player;
 
