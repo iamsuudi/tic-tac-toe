@@ -158,7 +158,7 @@ function screenController() {
     const game = GameController();
 
     const p = document.querySelector('p.winner');
-
+    const dialog = document.querySelector('dialog');
     const container = document.querySelector('div.container');
     
     container.addEventListener('click', updateScreen);
