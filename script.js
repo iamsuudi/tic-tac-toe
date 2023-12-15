@@ -25,7 +25,7 @@ function GameBoard() {
     }
 
     // resets cell values to default one
-    const clearBoard = () => {
+    const resetBoard = () => {
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++)
                 board[i][j].addToken();
