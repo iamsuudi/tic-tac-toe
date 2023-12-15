@@ -126,12 +126,15 @@ function GameController(player1 = "Player One", player2 = "Player Two") {
                 switchPlayerTurn();
                 printNewRound();
                 console.log(state);
+                return state;
             }
             else {
                 // there is a winner or it's a tie / board is full
                 board.printBoard();
                 console.log(state);
-            board.clearBoard();
+                board.resetBoard();
+                return state;
+            }
         }
     }
 
