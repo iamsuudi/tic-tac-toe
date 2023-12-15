@@ -121,16 +121,16 @@ function GameController(player1 = "Player One", player2 = "Player Two") {
 
             let state = winChecker();
 
-        if (state == "yet") {
-            // the board is not full and there is no winner
-            switchPlayerTurn();
-            printNewRound();
-            console.log(state);
-        }
-        else {
-            // there is a winner or it's a tie / board is full
-            board.printBoard();
-            console.log(state);
+            if (state == "yet") {
+                // the board is not full and there is no winner
+                switchPlayerTurn();
+                printNewRound();
+                console.log(state);
+            }
+            else {
+                // there is a winner or it's a tie / board is full
+                board.printBoard();
+                console.log(state);
             board.clearBoard();
         }
     }
