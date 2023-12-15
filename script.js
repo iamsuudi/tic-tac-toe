@@ -185,7 +185,9 @@ function screenController() {
         dialog.close();
     }
 
-        target.textContent = activePlayer.token;
+    function clearScreen() {
+        buttons.forEach(btn => btn.textContent = "");
+        p.textContent = "";
     }
 }
 
