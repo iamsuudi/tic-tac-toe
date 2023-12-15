@@ -140,7 +140,7 @@ function GameController(player1 = "Player One", player2 = "Player Two") {
 
     printNewRound();
 
-    return { playOneRound, getActivePlayer, winChecker };
+    return { playOneRound, getActivePlayer };
 }
 
 function cell() {
