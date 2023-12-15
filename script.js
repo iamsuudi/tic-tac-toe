@@ -164,6 +164,8 @@ function screenController() {
 
     container.addEventListener('click', updateScreen);
 
+    dialog.addEventListener('click', closeDialog);
+
     function updateScreen(event) {
         let target = event.target;
         let activePlayer = game.getActivePlayer();
