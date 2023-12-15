@@ -95,19 +95,19 @@ function GameController(player1 = "Player One", player2 = "Player Two") {
         return "It's tie";
 
         function rowChecker(row) {
-            if (row[0].getValue() === row[1].getValue() && row[1].getValue() !== "-"  && row[1].getValue() === row[2].getValue())
+            if (row[0].getValue() === row[1].getValue() && row[1].getValue() !== " " && row[1].getValue() === row[2].getValue())
                 return row[0].getValue();
         }
 
         function columnChecker(col) {
-            if (table[0][col].getValue() === table[1][col].getValue() && table[1][col].getValue() !== "-"  && table[1][col].getValue() === table[2][col].getValue())
+            if (table[0][col].getValue() === table[1][col].getValue() && table[1][col].getValue() !== " " && table[1][col].getValue() === table[2][col].getValue())
                 return table[0][col].getValue();
         }
 
         function diagonalChecker() {
-            if (table[0][0].getValue() === table[1][1].getValue() && table[1][1].getValue() !== "-" && table[2][2].getValue() === table[1][1].getValue())
+            if (table[0][0].getValue() === table[1][1].getValue() && table[1][1].getValue() !== " " && table[2][2].getValue() === table[1][1].getValue())
                 return table[1][1].getValue();
-            if (table[2][0].getValue() === table[1][1].getValue() && table[1][1].getValue() !== "-"  && table[1][1].getValue() === table[0][2].getValue())
+            if (table[2][0].getValue() === table[1][1].getValue() && table[1][1].getValue() !== " " && table[1][1].getValue() === table[0][2].getValue())
                 return table[1][1].getValue();
         }
     }
